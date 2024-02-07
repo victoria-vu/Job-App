@@ -3,18 +3,8 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.urls import reverse
 from django.template import loader
 
+from app.models import JobPost
 
-job_title = [
-    "First Job",
-    "Second Job",
-    "Third Job"
-]
-
-job_description = [
-    "First job description",
-    "Second job description",
-    "Third job description"
-]
 
 # Create your views here.
 class TempClass:
@@ -37,7 +27,8 @@ def hello(request):
 
 def job_list(request):
 
-    context = {"job_title_list": job_title}
+    jobs = JobPost.objects.all()
+    context = {"jobs": jobs}
     return render(request, "app/index.html", context)
 
 
@@ -46,7 +37,8 @@ def job_detail(request, id):
     try:
         if id == 0:
             return redirect(reverse("jobs_home"))
-        context = {"job_title": job_title[id], "job_description": job_description[id]}
+        job = JobPost.objects.get(id=id)
+        context = {"job": job}
         return render(request, "app/job_detail.html", context)
     except:
         return HttpResponseNotFound("Not Found")
