@@ -8,6 +8,7 @@ class JobPost(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now_add=True)
+    expiry = models.DateField(null=True)
     salary = models.IntegerField()
     slug = models.SlugField(null=True, max_length=40, unique=True)
 
@@ -21,4 +22,4 @@ class JobPost(models.Model):
     def __str__(self):
         """A string representation of a job post object."""
 
-        return self.title
+        return f"{self.title} with Salary {self.salary}"
