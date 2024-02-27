@@ -2,6 +2,12 @@ from django.db import models
 from django.utils.text import slugify
 
 # Create your models here.
+class Skills(models.Model):
+    """A job skill."""
+
+    name = models.CharField(max_length=200)
+
+
 class Author(models.Model):
     """An author."""
 
@@ -31,6 +37,7 @@ class JobPost(models.Model):
     slug = models.SlugField(null=True, max_length=40, unique=True)
     location = models.OneToOneField(Location, on_delete=models.CASCADE, null=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
+    skills = models.ManyToManyField(Skills)
 
     def save(self, *args, **kwargs):
         """Overrides the save method to automatically generate a slug based on the title."""
