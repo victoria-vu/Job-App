@@ -29,8 +29,13 @@ class Location(models.Model):
 class JobPost(models.Model):
     """A job post."""
 
+    JOB_TYPE_CHOICES = [
+        ("Full-Time", "Full-Time"),
+        ("Part-Time", "Part-Time"),
+    ]
+
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=200)
+    description = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     expiry = models.DateField(null=True)
     salary = models.IntegerField()
@@ -38,6 +43,7 @@ class JobPost(models.Model):
     location = models.OneToOneField(Location, on_delete=models.CASCADE, null=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     skills = models.ManyToManyField(Skills)
+    type = models.CharField(max_length=200, null=False, choices=JOB_TYPE_CHOICES)
 
     def save(self, *args, **kwargs):
         """Overrides the save method to automatically generate a slug based on the title."""
