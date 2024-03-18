@@ -33,7 +33,9 @@
           <h2 class="desctitle">
             Apply for this Job
           </h2>
-          <button class="apply">Apply Now</button>
+          <button class="apply">
+            <a href="{% url "submit_job_application" job.id %}">Apply Now</a>
+          </button>
         </div>
       </div>
       <p class="details">

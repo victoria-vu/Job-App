@@ -1,5 +1,7 @@
 from django import forms
-from .models import UploadFile, Uploads
+from django.utils.translation import gettext_lazy as _
+
+from .models import JobApplication, Uploads
 
 class UploadForm(forms.ModelForm):
     class Meta:
@@ -7,7 +9,14 @@ class UploadForm(forms.ModelForm):
         fields = "__all__"
 
 
-class UploadFileForm(forms.ModelForm):
+class JobApplicationForm(forms.ModelForm):
     class Meta:
-        model = UploadFile
-        fields = "__all__"
+        model = JobApplication
+        fields = ["first_name", "last_name", "email", "file", "description"]
+        labels = {
+            "first_name": _("First Name:"),
+            "last_name": _("Last Name:"),
+            "email": _("Email Address:"),
+            "file": _("Upload Resume:"),
+            "description": _("Description (Optional):"),
+        }

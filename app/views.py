@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotFound
 from django.urls import reverse
 from django.template import loader
+from uploadapp.views import upload_file as upload_submit_job_application
 
 from app.models import JobPost
 
@@ -24,3 +25,6 @@ def job_detail(request, id):
         return render(request, "app/job_detail.html", context)
     except:
         return HttpResponseNotFound("Not Found")
+    
+
+submit_job_application = upload_submit_job_application
