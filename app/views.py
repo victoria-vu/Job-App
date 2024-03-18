@@ -7,24 +7,6 @@ from app.models import JobPost
 
 
 # Create your views here.
-class TempClass:
-    x = 5
-
-def hello(request):
-    
-    list = ["alpha", "beta"]
-    temp = TempClass()
-    is_authenticated = False
-    context={
-        "name": "Django", 
-        "age": 30, 
-        "first_list": list, 
-        "temp_object": temp, 
-        "is_authenticated": is_authenticated
-        }
-    return render(request,"app/hello.html",context)
-
-
 def job_list(request):
 
     jobs = JobPost.objects.all()
