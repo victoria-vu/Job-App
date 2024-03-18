@@ -1,7 +1,45 @@
-<h4>
-    <a href="{% url "jobs_home" %}">Home</a>
-</h4>
+{% extends "base.html" %}
+{% block title %}{{ job.title }}{% endblock title %}
 
-<h1>{{ job.title }}</h1> 
-<h3>{{ job.description }}</h3>
-<h3>{{ job.salary }}</h3>
+{% block content %}
+<section>
+  <div class="container">
+    <div class="view-post">
+      <h1 class="jobtitle">
+        {{ job.title }}
+      </h1>
+
+      <table class="job-table">
+        <tr>
+          <th class="location it"><span class="material-icons"> place </span> Location</th>
+          <th class="status it"><span class="material-icons"> schedule </span> Type</th>
+          <th class="budget it"><span class="material-icons"> attach_money </span> Salary</th>
+        </tr>
+        <tr>
+          <th>{{ job.location.city }}, {{ job.location.state }}</th>
+          <th>{{ job.type }}</th>
+          <th>$ {{ job.salary }}</th>
+        </tr>
+      </table>
+
+      <div class="desc">
+        <h2 class="desctitle">
+          Job Description
+        </h2>
+        <p class="details">
+            {{ job.description }}
+        </p>
+        <div class="applynow">
+          <h2 class="desctitle">
+            Apply for this Job
+          </h2>
+          <button class="apply">Apply Now</button>
+        </div>
+      </div>
+      <p class="details">
+        Posted On: {{ job.date|date:"F d, Y" }}
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock content %}
