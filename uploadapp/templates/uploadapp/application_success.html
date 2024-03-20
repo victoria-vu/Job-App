@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Thank You{% endblock title %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="heading">
+            <h1>We've received your application.</h1>
+        </div>
+        <div class="message">
+            <p>Thank you for taking the time to submit your application.</p>
+        </div>
+        <div class="return-link">
+            <a href="{% url 'jobs_home' %}" class="return-homepage">
+                Return to Job Listings
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock content %}
