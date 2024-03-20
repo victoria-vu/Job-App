@@ -4,7 +4,17 @@
 {% block content %}
 <section>
     <div class="container">
-        <p>Thank you for your submission.</p>
+        <div class="heading">
+            <h1>You're Signed Up!</h1>
+        </div>
+        <div class="message">
+            <p>Thank you for subscribing to our newsletter.</p>
+        </div>
+        <div class="return-link">
+            <a href="{% url 'jobs_home' %}" class="return-homepage">
+                Return to Job Listings
+            </a>
+        </div>
     </div>
 </section>
 {% endblock content %}
