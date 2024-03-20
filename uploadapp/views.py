@@ -26,15 +26,15 @@ def upload_file(request, job_id):
         if form.is_valid():
             form.instance.job = job
             form.save()
-            return redirect(reverse("thank_you"))
+            return redirect(reverse("application_success"))
     else:
         form = JobApplicationForm()
 
     return render(request, "uploadapp/add_file.html", {"form": form})
 
 
-def thank_you(request):
+def application_success(request):
     """A view function to render a thank you page after successful submission."""
     
     context = {}
-    return render(request, "uploadapp/thank_you.html", context)
+    return render(request, "uploadapp/application_success.html", context)

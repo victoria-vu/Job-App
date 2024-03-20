@@ -18,5 +18,5 @@ class JobApplicationForm(forms.ModelForm):
             "last_name": _("Last Name:"),
             "email": _("Email Address:"),
             "file": _("Upload Resume:"),
-            "description": _("Description (Optional):"),
+            "description": _("Description:"),
         }
